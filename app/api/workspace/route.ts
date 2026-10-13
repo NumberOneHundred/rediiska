@@ -1,0 +1,4 @@
+import {env} from 'cloudflare:workers';
+import {access,handle,json,SITE,inProject,canTask,latestTasks} from '../../../lib/editorial/access';
+export const dynamic='force-dynamic';
+export async function GET(req:Request){return handle(async()=>{const a=await access(req);const p=await env.DB.prepare('SELECT * FROM projects WHERE workspace=? ORDER BY id').bind(SITE).all();const projects=p.results.map((r:any)=>({...JSON.parse(r.payload),id:r.id,revision:r.revision})).filter((r:any)=>inProject(a,r.id));const m=a.chief?await env.DB.prepare('SELECT email,name,role,projects,active FROM members WHERE workspace=?').bind(SITE).all():{results:[]};return json({user:{email:a.user.email,name:a.user.displayName,role:a.role,chief:a.chief},projects,members:m.results.map((r:any)=>({...r,projects:JSON.parse(r.projects)})),tasks:(await latestTasks()).filter(t=>canTask(a,t))})})}

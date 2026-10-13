@@ -1,0 +1,20 @@
+{
+  "version": "7",
+  "dialect": "sqlite",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "6",
+      "when": 1791750745608,
+      "tag": "0000_secret_captain_flint",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "6",
+      "when": 1791837529466,
+      "tag": "0001_talented_dragon_man",
+      "breakpoints": true
+    }
+  ]
+}
