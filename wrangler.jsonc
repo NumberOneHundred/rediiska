@@ -18,7 +18,7 @@
     {
       "binding": "DB",
       "database_name": "rediiska-db",
-      "database_id": "REPLACE_WITH_YOUR_D1_DATABASE_ID",
+      "database_id": "4bfaa7c2-2ca8-4264-9777-c980d0490e81",
       "migrations_dir": "drizzle"
     }
   ]
